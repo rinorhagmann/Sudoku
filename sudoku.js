@@ -1,15 +1,9 @@
-/**
- * Sudoku-Spiel JavaScript-Implementierung
- * Ermöglicht das Spielen von verschiedenen Sudoku-Rätseln mit Validierung
- */
-
-// Globale Variablen für das Spiel
 var numSelected = null;        // Aktuell ausgewählte Zahl (1-9)
 var tileSelected = null;       // Aktuell ausgewähltes Feld
 var errors = 0;                // Anzahl der Fehler
 var currentSudokuIndex = 0;    // Index des aktuellen Sudoku-Rätsels
 
-// Mehrere Sudoku-Puzzles
+// Sudokus
 var puzzles = [
     {
         board: [
@@ -262,9 +256,6 @@ window.onload = function() {
     setGame();
 }
 
-/**
- * Initialisiert das Spiel - erstellt die Zahlen-Auswahl und das Board
- */
 function setGame() {
     // Digits 1-9
     for (let i = 1; i <= 9; i++) {
@@ -284,9 +275,6 @@ function setGame() {
     document.querySelector(".other").addEventListener("click", changeSudoku);
 }
 
-/**
- * Erstellt das 9x9 Sudoku-Board mit den vorgegebenen Zahlen
- */
 function createBoard() {
     // Board 9x9
     for (let r = 0; r < 9; r++) {
@@ -319,10 +307,6 @@ function createBoard() {
     }
 }
 
-/**
- * Behandelt die Auswahl einer Zahl (1-9)
- * Hebt die ausgewählte Zahl visuell hervor
- */
 function selectNumber(){
     // Entferne Hervorhebung von vorheriger Auswahl
     if (numSelected != null) {
@@ -334,10 +318,6 @@ function selectNumber(){
     numSelected.classList.add("number-selected");
 }
 
-/**
- * Behandelt die Auswahl eines Feldes und das Platzieren von Zahlen
- * Validiert die Eingabe gegen die Lösung
- */
 function selectTile() {
     // Prüfe ob eine Zahl ausgewählt ist
     if (numSelected) {
@@ -364,10 +344,6 @@ function selectTile() {
     }
 }
 
-/**
- * Wechselt zum nächsten Sudoku-Rätsel in der Liste
- * Setzt das Spiel komplett zurück
- */
 function changeSudoku() {
     // Zum nächsten Sudoku wechseln (zyklisch)
     currentSudokuIndex = (currentSudokuIndex + 1) % puzzles.length;
