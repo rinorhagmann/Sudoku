@@ -257,9 +257,8 @@ window.onload = function() {
 }
 
 function setGame() {
-    // Digits 1-9
+    // Digits 1-9 unten
     for (let i = 1; i <= 9; i++) {
-        // Erstelle Zahlen-Button für die Auswahl
         let number = document.createElement("div");
         number.id = i
         number.innerText = i;
@@ -326,18 +325,18 @@ function selectTile() {
             return;
         }
 
-        // Extrahiere Koordinaten aus der Feld-ID: "0-0" "0-1" .. "3-1"
-        let coords = this.id.split("-"); //["0", "0"]
-        let r = parseInt(coords[0]);     // Reihe
-        let c = parseInt(coords[1]);     // Spalte
+        // Koordinaten extrahieren
+        let coords = this.id.split("-");
+        let r = parseInt(coords[0]);
+        let c = parseInt(coords[1]);
 
-        // Validiere die Eingabe gegen die korrekte Lösung
+        // Überprüfe Lösung, falls korrekt: Zahl ins Feld übernommen
         if (solution[r][c] == numSelected.id) {
-            // Korrekte Zahl - setze sie ins Feld
             this.innerText = numSelected.id;
         }
+
+        // Falsch
         else {
-            // Falsche Zahl - erhöhe Fehlerzähler
             errors += 1;
             document.getElementById("errors").innerText = errors;
         }
@@ -345,7 +344,7 @@ function selectTile() {
 }
 
 function changeSudoku() {
-    // Zum nächsten Sudoku wechseln (zyklisch)
+    // Zum nächsten Sudoku wechseln
     currentSudokuIndex = (currentSudokuIndex + 1) % puzzles.length;
     
     // Board und Solution aktualisieren
