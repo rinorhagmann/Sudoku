@@ -318,7 +318,6 @@ function selectNumber(){
 }
 
 function selectTile() {
-    // Prüfe ob eine Zahl ausgewählt ist
     if (numSelected) {
         // Verhindere Überschreiben von vorgegebenen Zahlen
         if (this.innerText != "") {
